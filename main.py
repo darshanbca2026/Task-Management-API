@@ -13,6 +13,11 @@ Base.metadata.create_all(bind=engine)
 
 
 app = FastAPI()
+@app.get("/")
+def home():
+    return {"message": "API Running 🚀", "go_to_docs": "/docs"}
+
+
 app.include_router(auth.router)
 @app.post("/tasks")
 def create_task(
